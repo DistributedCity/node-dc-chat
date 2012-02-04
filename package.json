@@ -1,5 +1,5 @@
 {
-  "name": "node-dc-chat",
+    "name": "node-dc-chat",
   "description": "simple distributed chat system with web interface",
   "version": "0.0.1",
   "repository":
