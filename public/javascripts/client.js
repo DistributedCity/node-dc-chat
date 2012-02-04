@@ -4,6 +4,7 @@ var CONFIG = { debug: false
                , last_message_time: 1
                , focus: true //event listeners bound in onConnect
                , unread: 0 //updated in the message-processing loop
+               , channel: null // set in onConnect
              };
 
 var nicks = [];
@@ -114,6 +115,10 @@ function updateUsersLink ( ) {
     $("#usersLink").text(t);
 }
 
+function updateChannelName ( ) {
+    $("#channelName").text("Channel: #" + channel);
+}
+
 //handles another person joining chat
 function userJoin(nick, timestamp) {
     //put it in the stream
@@ -125,6 +130,7 @@ function userJoin(nick, timestamp) {
     nicks.push(nick);
     //update the UI
     updateUsersLink();
+    updateChannelName();
 }
 
 //handles someone leaving
@@ -312,26 +318,36 @@ function longPoll (data) {
     }
 
     //make another request
+    // FIXME - /recv should not be getting called until user has a session no reason for it. just having login page open is polling for new messages
     $.ajax({ cache: false
              , type: "GET"
              , url: "/recv"
              , dataType: "json"
-             , data: { since: CONFIG.last_message_time, id: CONFIG.id }
+             , data: { channel: channel, since: CONFIG.last_message_time, id: CONFIG.id }
              , error: function () {
-                 addMessage("", "long poll error. trying again...", new Date(), "error");
-                 transmission_errors += 1;
-                 //don't flood the servers on error, wait 10 seconds before retrying
-                 setTimeout(longPoll, 10*1000);
-             }
-             , success: function (data) {
-                 transmission_errors = 0;
-                 //if everything went well, begin another request immediately
-                 //the server will take a long time to respond
-                 //how long? well, it will wait until there is another message
-                 //and then it will return it to us and close the connection.
-                 //since the connection is closed when we get data, we longPoll again
-                 longPoll(data);
-             }
+            addMessage("", "long poll error. trying again...", new Date(), "error");
+
+            transmission_errors += 1;
+            //don't flood the servers on error, wait 10 seconds before retrying
+            setTimeout(longPoll, 10*1000);
+        }
+        , success: function (data) {
+            if(data.error){
+                //alert("recv error: " + data.error);
+                transmission_errors += 1;
+                //don't flood the servers on error, wait 10 seconds before retrying
+                setTimeout(longPoll, 10*1000);
+
+            }else{
+                transmission_errors = 0;
+                //if everything went well, begin another request immediately
+                //the server will take a long time to respond
+                //how long? well, it will wait until there is another message
+                //and then it will return it to us and close the connection.
+                //since the connection is closed when we get data, we longPoll again
+                longPoll(data);
+            }
+        }
            });
 }
 
@@ -340,7 +356,7 @@ function send(msg) {
     if (CONFIG.debug === false) {
         // XXX should be POST
         // XXX should add to messages immediately
-        jQuery.get("/send", {id: CONFIG.id, text: msg}, function (data) { }, "json");
+        jQuery.get("/send", {channel: channel, id: CONFIG.id, text: msg}, function (data) { }, "json");
     }
 }
 
@@ -383,7 +399,7 @@ function updateTitle(){
 var starttime;
 // daemon memory usage
 var rss;
-
+var channel;
 //handle the server's response to our nickname and join request
 function onConnect (session) {
     if (session.error) {
@@ -396,8 +412,11 @@ function onConnect (session) {
     CONFIG.id   = session.id;
     starttime   = new Date(session.starttime);
     rss         = session.rss;
+    channel     = session.channel;
+    alert(channel);
     updateRSS();
     updateUptime();
+    updateChannelName();
 
     //update the UI to show the chat
     showChat(CONFIG.nick);
@@ -456,6 +475,13 @@ $(document).ready(function() {
             return false;
         }
 
+        var channel = $("#channelInput").attr("value");
+        if (nick.length < 1) {
+            alert("Channel missing.");
+            showConnect();
+            return false;
+        }
+
         //more validations
         if (/[^\w_\-^!]/.exec(nick)) {
             alert("Bad character in nick. Can only have letters, numbers, and '_', '-', '^', '!'");
@@ -468,7 +494,8 @@ $(document).ready(function() {
                  , type: "GET" // XXX should be POST
                  , dataType: "json"
                  , url: "/join"
-                 , data: { nick: nick }
+                 , data: { nick: nick
+                         , channel: channel }
                  , error: function () {
                      alert("error connecting to server");
                      showConnect();
