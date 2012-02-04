@@ -1,50 +1,61 @@
-# About
+## About
+P2P Distributed Encrypted Anonymous Chat System. The current interface is similar to an IRC screen.
 
-# Features
-* Super easy download, install and run.
-* Standalone with built in webserver.
-* Fast realtime, slick, minimal web based interface.
+## Features
+* Easy download, Install & Run
+* Standalone with built in Webserver.
+* Slick, minimal web based interface.
 * Tiny codebase using Express.js and Node.js
 * NEW Supports Multiple Channels
 
-# Dependencies
+## TODO
+* Implement Encryption
+* Implement Persistence and Replication Layer in CouchDB.
+* Package and delpoy to npm (node package manager) service.
+* Implement Peer Auto Discovery
+* Document setup with SSL, I2P and Tor for both Personal and Shared usage.
+* Add Windows and OS X documentation.
+* Investigate Android/IOS viability.
+
+## Dependencies
 See package.json. Basically Express.js and Jade for templating. npm install takes care of installing local app versions needed.
 
-# Install
+## Install
 
-1. Download
+#### Assumptions
+* Node.js is installed
+* npm is installed. (The node package manager)
+* For these instructions, you are on linux.
+
+#### Download
 ```
 git clone git://github.com/DistributedCity/node-dc-chat.git
 cd node-dc-chat
 ```
 
-2. Install Dependencies listed in package.json
+#### Install Dependencies listed in package.json
 ```
 npm install
 ```
 
-3. Run
+#### Run
 ```
 node server.js
 ```
 
-4. Play
+#### Play
 Point two different browsers or tabs to:
 http://localhost:3000
 
 
-# TODO
-* Implement Persistence and Replication Layer in CouchDB
-* Implement Encryption
-* Package and delpoy to npm (node package manager) service.
 
 
-# License
+## License
 MIT
 
-# Authors
+## Authors
 * Original fork from node_chat_express by Jonathan Kupferman (jkupferman@umail.ucsb.edu)
 * Hiro White, Agorist Radio
 
-# Contact
+## Contact
 [IRC](http://distributedcity.github.com/#contact)

@@ -116,33 +116,89 @@ a{color:#369}
   </div>
   <ul id="sections">
     
+      <li>
+        <a href="#about">About</a>
+        
+      </li>
+    
+      <li>
+        <a href="#features">Features</a>
+        
+      </li>
+    
+      <li>
+        <a href="#todo">TODO</a>
+        
+      </li>
+    
+      <li>
+        <a href="#dependencies">Dependencies</a>
+        
+      </li>
+    
+      <li>
+        <a href="#install">Install</a>
+        
+      </li>
+    
+      <li>
+        <a href="#license">License</a>
+        
+      </li>
+    
+      <li>
+        <a href="#authors">Authors</a>
+        
+      </li>
+    
+      <li>
+        <a href="#contact">Contact</a>
+        
+      </li>
+    
   </ul>
   
   
 </div>
 <div id="content">
   
-  <h1>About</h1>
-<h1>Features</h1>
-<ul><li>Super easy download, install and run.</li><li>Standalone with built in webserver.</li><li>Fast realtime, slick, minimal web based interface.</li><li>Tiny codebase using Express.js and Node.js</li><li>NEW Supports Multiple Channels </li></ul>
-<h1>Dependencies</h1>
+  <h2 id='about'>About</h2 id='about'>
+<p>P2P Distributed Encrypted Anonymous Chat System. The current interface is similar to an IRC screen.
+
+</p>
+<h2 id='features'>Features</h2 id='features'>
+<ul><li>Easy download, Install &amp; Run</li><li>Standalone with built in Webserver.</li><li>Slick, minimal web based interface.</li><li>Tiny codebase using Express.js and Node.js</li><li>NEW Supports Multiple Channels </li></ul>
+<h2 id='todo'>TODO</h2 id='todo'>
+<ul><li>Implement Encryption</li><li>Implement Persistence and Replication Layer in CouchDB.</li><li>Package and delpoy to npm (node package manager) service.</li><li>Implement Peer Auto Discovery</li><li>Document setup with SSL, I2P and Tor for both Personal and Shared usage.</li><li>Add Windows and OS X documentation.</li><li>Investigate Android/IOS viability. </li></ul>
+<h2 id='dependencies'>Dependencies</h2 id='dependencies'>
 <p>See package.json. Basically Express.js and Jade for templating. npm install takes care of installing local app versions needed.
 
 </p>
-<h1>Install</h1>
-<ol><li><p>Download</p> <pre><code><span class="identifier">git</span> <span class="identifier"><span class="keymethods">clone</span></span> <span class="identifier">git</span><span class="symbol">:</span>/<span class="regexp">/github.com/</span><span class="constant">DistributedCity</span>/<span class="identifier">node</span>-<span class="identifier">dc</span>-<span class="identifier">chat</span>.<span class="identifier">git</span>
-<span class="identifier">cd</span> <span class="identifier">node</span>-<span class="identifier">dc</span>-<span class="identifier">chat</span></code></pre></li><li><p>Install Dependencies listed in package.json</p> <pre><code>npm <span class="keyword">install</span></code></pre></li><li><p>Run</p> <pre><code><span class="title">node</span> server.js</code></pre></li><li><p>Play
-Point two different browsers or tabs to:
-<a href="http://localhost:3000">http://localhost:3000</a></p> </li></ol>
-<h1>TODO</h1>
-<ul><li>Implement Persistence and Replication Layer in CouchDB</li><li>Implement Encryption</li><li>Package and delpoy to npm (node package manager) service. </li></ul>
-<h1>License</h1>
+<h2 id='install'>Install</h2 id='install'>
+<h4>Assumptions</h4>
+<ul><li>Node.js is installed</li><li>npm is installed. (The node package manager)</li><li>For these instructions, you are on linux. </li></ul>
+<h4>Download</h4>
+<pre><code><span class="identifier">git</span> <span class="identifier"><span class="keymethods">clone</span></span> <span class="identifier">git</span><span class="symbol">:</span>/<span class="regexp">/github.com/</span><span class="constant">DistributedCity</span>/<span class="identifier">node</span>-<span class="identifier">dc</span>-<span class="identifier">chat</span>.<span class="identifier">git</span>
+<span class="identifier">cd</span> <span class="identifier">node</span>-<span class="identifier">dc</span>-<span class="identifier">chat</span></code></pre>
+<h4>Install Dependencies listed in package.json</h4>
+<pre><code>npm <span class="keyword">install</span></code></pre>
+<h4>Run</h4>
+<pre><code><span class="title">node</span> server.js</code></pre>
+<h4>Play</h4>
+<p>Point two different browsers or tabs to:
+<a href="http://localhost:3000">http://localhost:3000</a>
+
+
+
+
+</p>
+<h2 id='license'>License</h2 id='license'>
 <p>MIT
 
 </p>
-<h1>Authors</h1>
+<h2 id='authors'>Authors</h2 id='authors'>
 <ul><li>Original fork from node_chat_express by Jonathan Kupferman (jkupferman@umail.ucsb.edu)</li><li>Hiro White, Agorist Radio </li></ul>
-<h1>Contact</h1>
+<h2 id='contact'>Contact</h2 id='contact'>
 <p><a href="http://distributedcity.github.com/#contact">IRC</a></p>
 </div></body>
 </html>
