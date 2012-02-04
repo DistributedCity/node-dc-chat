@@ -1,5 +1,6 @@
 Update: Implemented multi channel capability.
 
+
 This app is a simple port of Ryan Dhal's node_chat application to use the Express framework and Jade templating language. Assuming everything was done correctly it should work just like the original application.
 
 To install it you need the express framework and jade templating language:
