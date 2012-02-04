@@ -8,15 +8,6 @@ P2P Distributed Encrypted Anonymous Chat System. The current interface is simila
 * Tiny codebase using Express.js and Node.js
 * NEW Supports Multiple Channels
 
-## TODO
-* Implement Encryption
-* Implement Persistence and Replication Layer in CouchDB.
-* Package and delpoy to npm (node package manager) service.
-* Implement Peer Auto Discovery
-* Document setup with SSL, I2P and Tor for both Personal and Shared usage.
-* Add Windows and OS X documentation.
-* Investigate Android/IOS viability.
-
 ## Dependencies
 See package.json. Basically Express.js and Jade for templating. npm install takes care of installing local app versions needed.
 
@@ -45,13 +36,17 @@ node server.js
 
 #### Play
 Point two different browsers or tabs to:
-http://localhost:3000
+http://localhost:3000/
 
+## TODO
+* Implement Encryption
+* Implement Persistence and Replication Layer in CouchDB.
+* Package and delpoy to npm (node package manager) service.
+* Implement Peer Auto Discovery
+* Document setup with SSL, I2P and Tor for both Personal and Shared usage.
+* Add Windows and OS X documentation.
+* Investigate Android/IOS viability.
 
-
-
-## License
-MIT
 
 ## Authors
 * Original fork from node_chat_express by Jonathan Kupferman (jkupferman@umail.ucsb.edu)
@@ -59,3 +54,6 @@ MIT
 
 ## Contact
 [IRC](http://distributedcity.github.com/#contact)
+
+## License
+MIT
