@@ -413,8 +413,8 @@ function onConnect (session) {
     starttime   = new Date(session.starttime);
     rss         = session.rss;
     channel     = session.channel;
-    alert(channel);
-    updateRSS();
+
+updateRSS();
     updateUptime();
     updateChannelName();
 

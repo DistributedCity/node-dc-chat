@@ -22,7 +22,7 @@ app.configure(function(){
 
 app.get("/", function(req, res){
     res.render('index', {
-            channel: "pizzastore"
+            channel: "distributedcity"
     } );
 });
 
