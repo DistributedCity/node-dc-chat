@@ -22,7 +22,7 @@ app.configure(function(){
 
 app.get("/", function(req, res){
     res.render('index', {
-            channel: "pizzastore"
+            channel: "distributedcity"
     } );
 });
 
@@ -245,5 +245,6 @@ var channel = new function () {
         }
     }, 3000);
 };
-app.listen(3000);
+var port = process.env.PORT || process.env.C9_PORT || 3000;
+app.listen(port);
 console.log('Express server started on port %s', app.address().port);
